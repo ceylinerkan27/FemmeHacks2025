@@ -107,24 +107,29 @@ function Journal() {
     )
   };
 
-  return (
-    <div className="journal-container">
-      <h1>Journal</h1>
-      <form onSubmit={handleSubmit}>
+  const textArea = document.querySelector('textarea')
+    const textRowCount = textArea ? textArea.value.split("\n").length : 0
+    const rows = textRowCount + 1
+    return (
+        <div className="journal-container">
+            <h1 className = 'PageTitle'>Journal</h1>
+            <form onSubmit={handleSubmit}>
         <textarea
-          value={entry}
-          onChange={handleInputChange}
-          placeholder="How are you feeling today? Input your thoughts and we'll respond with some resources!"
+            value={entry}
+            onChange={handleInputChange}
+            placeholder="How are you feeling today? Input your thoughts and we'll respond with some resources!"
+            rows={rows}
         ></textarea>
-        <button type="submit">Submit</button>
-      </form>
+                <button type="submit">Submit</button>
+            </form>
 
-      {recommendation && (
-        <div className="recommendation-section">
-          <h2>Recommendation:</h2>
-          <p>{recommendation}</p>
-        </div>
-      )}
+            {recommendation && (
+                <div className="recommendation-section">
+                    <h2>Recommendation:</h2>
+                    <p>{recommendation}</p>
+                </div>
+            )}
+
 
       {/* Mental Health Resources Tabs */}
       <div className="resources-section">
