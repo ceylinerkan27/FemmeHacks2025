@@ -1,0 +1,44 @@
+.pagesContainer {
+    margin: 2rem 0 0 0;
+    ul {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        flex-direction: column;
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            flex-direction: row;
+            margin: 0.75rem 0;
+            padding: 0.75rem 0;
+            width: 100%;
+            border-radius: 1rem;
+
+            a{
+                text-decoration: none;
+                font-family: "American Typewriter", serif;
+                color: darkblue;
+                font-size: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                text-align: center;
+                padding-left: 25%;
+                font-size: x-large;
+            }
+        }
+        li.active{
+            a{
+                color:white;
+            }
+        }
+        li:hover {
+            background-color: lightblue;
+        }
+    }
+}
