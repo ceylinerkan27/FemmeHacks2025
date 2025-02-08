@@ -3,11 +3,17 @@ import './Journal.css';
 
 function Journal() {
   const [entry, setEntry] = useState(''); // State for user input
+  const [name, setName] = useState(''); // State for user name
   const [recommendation, setRecommendation] = useState(''); // State for recommendation
   const [activeTab, setActiveTab] = useState('anxiety'); // State for active tab
 
   const handleInputChange = (e) => {
     setEntry(e.target.value);
+  };
+  
+  const handleNameSubmit = (e) => {
+    e.preventDefault();
+    localStorage.setItem('userName', name); // Store the name in localStorage
   };
 
   const handleSubmit = (e) => {
@@ -112,7 +118,24 @@ function Journal() {
     const rows = textRowCount + 1
     return (
         <div className="journal-container">
-            <h1 className = 'PageTitle'>Journal</h1>
+          {/* Name Input Section */}
+          {!name && (
+            <form onSubmit={handleNameSubmit}>
+              <label htmlFor="name">Enter your name:</label>
+              <input
+                type="text"
+                id="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+              />
+              <button type="submit">Save Name</button>
+            </form>
+          )}
+
+      {name && (
+        <>
+            <h1 className = 'PageTitle'>Welcome to Journal, {name}!</h1>
             <form onSubmit={handleSubmit}>
         <textarea
             value={entry}
