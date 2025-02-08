@@ -50,7 +50,9 @@ function Journal() {
 
   return (
     <div className="journal-container">
-      <h1>Journal</h1>
+      <div className={'PageTitle'}>
+        <h1>Journal</h1>
+      </div>
       <form onSubmit={handleSubmit}>
         <textarea
           value={entry}
