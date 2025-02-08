@@ -1,0 +1,80 @@
+.journal-container {
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
+
+textarea {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+button {
+  padding: 10px 15px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.recommendation-section {
+  margin-top: 20px;
+}
+
+.resources-section {
+  margin-top: 30px;
+}
+
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.tabs button {
+  padding: 10px 15px;
+  background-color: #e0e0e0;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.tabs button.active-tab {
+  background-color: #007BFF;
+  color: white;
+}
+
+.resource-content {
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.resource-content ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.resource-content ul li {
+  margin-bottom: 10px;
+}
+
+.resource-content ul li a {
+  color: #007BFF;
+  text-decoration: none;
+}
+
+.resource-content ul li a:hover {
+  text-decoration: underline;
+}
