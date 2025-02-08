@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Journal.css';
 
 function Journal() {
   const [entry, setEntry] = useState(''); // State for user input
   const [recommendation, setRecommendation] = useState(''); // State for recommendation
+  const [showResources, setShowResources] = useState(false); // State for showing/hiding resources
 
   const handleInputChange = (e) => {
     setEntry(e.target.value);
@@ -22,7 +23,6 @@ function Journal() {
     ];
 
     const recs = {
-      // we can edit with specific links to resources
       anxious: 'Try some deep breathing exercises or meditation.',
       stressed: 'Take a break and go for a walk outside to clear your mind.',
       sad: 'Connect with a friend or family member for support.',
@@ -44,8 +44,12 @@ function Journal() {
     setRecommendation('No specific recommendation for how you’re feeling, but stay positive!');
   };
 
+  const toggleResources = () => {
+    setShowResources(!showResources);
+  };
+
   return (
-    <div>
+    <div className="journal-container">
       <h1>Journal</h1>
       <form onSubmit={handleSubmit}>
         <textarea
@@ -57,11 +61,48 @@ function Journal() {
       </form>
 
       {recommendation && (
-        <div>
+        <div className="recommendation-section">
           <h2>Recommendation:</h2>
           <p>{recommendation}</p>
         </div>
       )}
+
+      {/* Mental Health Resources Section */}
+      <div className="resources-section">
+        <button className="resources-toggle" onClick={toggleResources}>
+          {showResources ? 'Hide Mental Health Resources' : 'Show Mental Health Resources'}
+        </button>
+
+        {showResources && (
+          <ul className="resources-list">
+            <li>
+              <a href="https://www.anxiety.org" target="_blank" rel="noopener noreferrer">
+                Anxiety Resources
+              </a>
+            </li>
+            <li>
+              <a href="https://www.stress.org" target="_blank" rel="noopener noreferrer">
+                Coping with Stress
+              </a>
+            </li>
+            <li>
+              <a href="https://www.mhanational.org/mental-health-month" target="_blank" rel="noopener noreferrer">
+                Mental Health America Resources
+              </a>
+            </li>
+            <li>
+              <a href="https://www.verywellmind.com/ways-to-cope-with-sadness-5093285" target="_blank" rel="noopener noreferrer">
+                Dealing with Sadness
+              </a>
+            </li>
+            <li>
+              <a href="https://www.headspace.com/meditation" target="_blank" rel="noopener noreferrer">
+                Meditation for Calmness
+              </a>
+            </li>
+          </ul>
+        )}
+      </div>
     </div>
   );
 }
