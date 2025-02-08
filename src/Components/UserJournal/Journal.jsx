@@ -4,7 +4,7 @@ import './Journal.css';
 function Journal() {
   const [entry, setEntry] = useState(''); // State for user input
   const [recommendation, setRecommendation] = useState(''); // State for recommendation
-  const [showResources, setShowResources] = useState(false); // State for showing/hiding resources
+  const [activeTab, setActiveTab] = useState('anxiety'); // State for active tab
 
   const handleInputChange = (e) => {
     setEntry(e.target.value);
@@ -44,15 +44,72 @@ function Journal() {
     setRecommendation('No specific recommendation for how you’re feeling, but stay positive!');
   };
 
-  const toggleResources = () => {
-    setShowResources(!showResources);
+  const changeTab = (tab) => {
+    setActiveTab(tab);
+  };
+
+  const resourceContent = {
+    anxiety: (
+      <ul>
+        <li>
+          <a href="https://www.anxiety.org" target="_blank" rel="noopener noreferrer">
+            Anxiety Resources
+          </a>
+        </li>
+        <li>
+          <a href="https://www.headspace.com/meditation" target="_blank" rel="noopener noreferrer">
+            Meditation for Calmness
+          </a>
+        </li>
+      </ul>
+    ),
+    stress: (
+      <ul>
+        <li>
+          <a href="https://www.stress.org" target="_blank" rel="noopener noreferrer">
+            Coping with Stress
+          </a>
+        </li>
+        <li>
+          <a href="https://www.mindful.org" target="_blank" rel="noopener noreferrer">
+            Mindful Practices to Reduce Stress
+          </a>
+        </li>
+      </ul>
+    ),
+    sadness: (
+      <ul>
+        <li>
+          <a href="https://www.verywellmind.com/ways-to-cope-with-sadness-5093285" target="_blank" rel="noopener noreferrer">
+            Dealing with Sadness
+          </a>
+        </li>
+        <li>
+          <a href="https://www.betterhelp.com" target="_blank" rel="noopener noreferrer">
+            Talk to a Therapist Online
+          </a>
+        </li>
+      </ul>
+    ),
+    loneliness: (
+      <ul>
+        <li>
+          <a href="https://www.psychologytoday.com/us/blog/living-forward/202005/how-deal-loneliness" target="_blank" rel="noopener noreferrer">
+            How to Deal with Loneliness
+          </a>
+        </li>
+        <li>
+          <a href="https://www.meetup.com" target="_blank" rel="noopener noreferrer">
+            Join a Group Near You
+          </a>
+        </li>
+      </ul>
+    )
   };
 
   return (
     <div className="journal-container">
-      <div className={'PageTitle'}>
-        <h1>Journal</h1>
-      </div>
+      <h1>Journal</h1>
       <form onSubmit={handleSubmit}>
         <textarea
           value={entry}
@@ -69,41 +126,39 @@ function Journal() {
         </div>
       )}
 
-      {/* Mental Health Resources Section */}
+      {/* Mental Health Resources Tabs */}
       <div className="resources-section">
-        <button className="resources-toggle" onClick={toggleResources}>
-          {showResources ? 'Hide Mental Health Resources' : 'Show Mental Health Resources'}
-        </button>
+        <h2>Mental Health Resources</h2>
+        <div className="tabs">
+          <button 
+            className={activeTab === 'anxiety' ? 'active-tab' : ''} 
+            onClick={() => changeTab('anxiety')}
+          >
+            Anxiety
+          </button>
+          <button 
+            className={activeTab === 'stress' ? 'active-tab' : ''} 
+            onClick={() => changeTab('stress')}
+          >
+            Stress
+          </button>
+          <button 
+            className={activeTab === 'sadness' ? 'active-tab' : ''} 
+            onClick={() => changeTab('sadness')}
+          >
+            Sadness
+          </button>
+          <button 
+            className={activeTab === 'loneliness' ? 'active-tab' : ''} 
+            onClick={() => changeTab('loneliness')}
+          >
+            Loneliness
+          </button>
+        </div>
 
-        {showResources && (
-          <ul className="resources-list">
-            <li>
-              <a href="https://www.anxiety.org" target="_blank" rel="noopener noreferrer">
-                Anxiety Resources
-              </a>
-            </li>
-            <li>
-              <a href="https://www.stress.org" target="_blank" rel="noopener noreferrer">
-                Coping with Stress
-              </a>
-            </li>
-            <li>
-              <a href="https://www.mhanational.org/mental-health-month" target="_blank" rel="noopener noreferrer">
-                Mental Health America Resources
-              </a>
-            </li>
-            <li>
-              <a href="https://www.verywellmind.com/ways-to-cope-with-sadness-5093285" target="_blank" rel="noopener noreferrer">
-                Dealing with Sadness
-              </a>
-            </li>
-            <li>
-              <a href="https://www.headspace.com/meditation" target="_blank" rel="noopener noreferrer">
-                Meditation for Calmness
-              </a>
-            </li>
-          </ul>
-        )}
+        <div className="resource-content">
+          {resourceContent[activeTab]}
+        </div>
       </div>
     </div>
   );
