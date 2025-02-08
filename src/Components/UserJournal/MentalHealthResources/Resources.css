@@ -1,0 +1,41 @@
+.resource-card {
+    display: flex;
+    align-items: center;
+    background: #f9f9f9;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.resource-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 10px;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+.resource-info {
+    flex: 1;
+}
+
+.resource-info h3 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.resource-info p {
+    margin: 5px 0;
+    color: #555;
+}
+
+.resource-info a {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+}
+
+.resource-info a:hover {
+    text-decoration: underline;
+}
